@@ -1,6 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<nav class="navbar bg-body-tertiary">
+    <a class="navbar-brand" href="#">Fariska</a>
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'main:logout' %}">
+                <button class="btn btn-outline-success" type="submit">Logout</button>
+            </a>
+        </li>
+    </ul>
+</nav>
+
+
+
     <h1>Shopping List Page</h1>
 
     <h5>Name:</h5>
@@ -25,6 +38,18 @@
             <td>{{product.price}}</td>
             <td>{{product.description}}</td>
             <td>{{product.date_added}}</td>
+            <td>
+                <a href="{% url 'main:edit_product' product.pk %}">
+                    <button>
+                        Edit
+                    </button>
+                </a>
+                <a href="{% url 'main:delete_product' product.pk %}">
+                      <button>
+                          Delete
+                      </button>
+                  </a>
+            </td>
         </tr>
     {% endfor %}
 </table>
